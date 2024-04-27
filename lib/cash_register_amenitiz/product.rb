@@ -6,29 +6,39 @@ module CashRegisterAmenitiz
   # TODO: Create good class documentation.
   #
   module Product
+    module_function
+
     INVENTORY = {
       'GR1': {
         'name': 'Green tea',
-        'price': 3.11
+        'price': 3.11,
+        'promotion': 'buy_one_get_one_free'
       },
       'SR1': {
         'name': 'Strawberry',
-        'price': 5.00
+        'price': 5.00,
+        'promotion': 'discount_to_fixed_price'
       },
       'CF1': {
         'name': 'Coffee',
-        'price': 11.23
+        'price': 11.23,
+        'promotion': 'discount_to_fractioned_price'
       }
     }.freeze
 
     # Get the product name.
-    def self.price(product_code)
+    def price(product_code)
       INVENTORY[product_code.to_sym][:price]
     end
 
     # Get the product name.
-    def self.name(product_code)
+    def name(product_code)
       INVENTORY[product_code.to_sym][:name]
+    end
+
+    # Get the product promotion.
+    def promotion(product_code)
+      INVENTORY[product_code.to_sym][:promotion]
     end
   end
 end
