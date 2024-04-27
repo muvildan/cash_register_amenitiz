@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe CashRegisterAmenitiz do
-  let(:cart) { CashRegisterAmenitiz.new }
+RSpec.describe CashRegisterAmenitiz::Cart do
+  let(:cart) { CashRegisterAmenitiz::Cart.new }
 
   # There should be a method to add products to the cart
   describe '#add_product' do
