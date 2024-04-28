@@ -36,5 +36,15 @@ module CashRegisterAmenitiz
     def name(product_code)
       INVENTORY[product_code.to_sym][:name]
     end
+
+    # Get all the product codes.
+    def list
+      INVENTORY.keys.map(&:to_s)
+    end
+
+    # Get the raw Inventory with or without filters
+    def inventory(list = nil)
+      list ? INVENTORY.select { |key, _| list.include?(key.to_s) } : INVENTORY
+    end
   end
 end

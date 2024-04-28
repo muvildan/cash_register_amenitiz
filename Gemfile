@@ -7,6 +7,8 @@ gemspec
 
 ruby file: '.ruby-version'
 
+gem 'colorize', '~> 1.1.0'
 gem 'rspec', '~> 3.0'
 gem 'rubocop', '~> 1.21'
 gem 'ruby-lsp', '~> 0.16.5'
+gem 'tty-prompt', '~> 0.23.1'

@@ -11,7 +11,7 @@ module CashRegisterAmenitiz
 
     def initialize(items, product)
       @items = items
-      @no_promo = items
+      @no_promo = items.dup
       @product = product
     end
 

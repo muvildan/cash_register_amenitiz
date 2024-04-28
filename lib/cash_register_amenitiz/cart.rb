@@ -30,5 +30,13 @@ module CashRegisterAmenitiz
       cart += no_promo.map { |product_code| @product.price(product_code) }.sum
       cart.round(2)
     end
+
+    def full_price
+      @items.map { |product_code| @product.price(product_code) }.sum.round(2)
+    end
+
+    def empty
+      @items.clear
+    end
   end
 end

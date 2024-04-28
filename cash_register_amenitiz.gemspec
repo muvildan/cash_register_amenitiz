@@ -15,6 +15,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 3.3.1'
 
+  spec.add_dependency 'colorize'
+  spec.add_dependency 'tty-prompt'
   spec.add_development_dependency 'rspec'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'ruby-lsp'
