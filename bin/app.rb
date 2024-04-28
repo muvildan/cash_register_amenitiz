@@ -67,7 +67,7 @@ class StoreApp
   end
 
   def show_cart_prices
-    puts 'Full price: '.colorize(:light_red) + "#{@cart.full_price}€".colorize(color: :red, mode: :bold)
+    puts 'Full price: '.colorize(:light_yellow) + "#{@cart.full_price}€".colorize(color: :yellow, mode: :bold)
     puts 'Final price (with discounts): '.colorize(:light_green) +
          "#{@cart.total_price}€\n".colorize(color: :green, mode: :bold)
   end
@@ -116,7 +116,7 @@ class StoreApp
     product_code = @prompt.select('Select the product to remove:', product_map(@cart.items))
     product_name = @product.name(product_code)
     puts "\n(-) ".colorize(color: :red, mode: :bold) +
-         "Product #{product_name} - #{product_code} removed from the cart.".colorize(:cyan)
+         "Product #{product_name} - #{product_code} removed from the cart.".colorize(:red)
     @cart.remove_product(product_code)
   end
 end
