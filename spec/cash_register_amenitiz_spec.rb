@@ -11,6 +11,16 @@ RSpec.describe CashRegisterAmenitiz::Cart do
     end
   end
 
+  # There should be a method to remove products from the cart
+  describe '#remove_product' do
+    it 'removes a product from the cart' do
+      cart.add_product('GR1')
+      cart.add_product('SR1')
+      cart.remove_product('GR1')
+      expect(cart.items).to eq(['SR1'])
+    end
+  end
+
   describe '#total_price' do
     # | GR1,GR1 | 3.11€ |
     it 'calculates the pricing discount requested by the CEO' do
