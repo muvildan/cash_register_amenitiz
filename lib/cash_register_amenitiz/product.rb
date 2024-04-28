@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 module CashRegisterAmenitiz
-  # Class Product.
+  # The Product class manages product information.
   #
-  # TODO: Create good class documentation.
+  # Responsibilities:
+  # - Provides access to product prices and names.
+  # - Maintains an inventory of available products.
   #
-  module Product
-    module_function
-
+  class Product
+    # The INVENTORY hash contains product codes as keys, each with a nested hash
+    # containing the product's name and price.
     INVENTORY = {
       'GR1': {
         'name': 'Green tea',
@@ -23,27 +25,27 @@ module CashRegisterAmenitiz
       },
       'TEST': {
         'name': 'Test',
-        'price': 10
+        'price': 10.00
       }
     }.freeze
 
-    # Get the product name.
-    def price(product_code)
+    # Returns the price of a product based on its product code.
+    def self.price(product_code)
       INVENTORY[product_code.to_sym][:price]
     end
 
-    # Get the product name.
-    def name(product_code)
+    # Returns the name of a product based on its product code.
+    def self.name(product_code)
       INVENTORY[product_code.to_sym][:name]
     end
 
-    # Get all the product codes.
-    def list
+    # Returns an array of all available product codes.
+    def self.list
       INVENTORY.keys.map(&:to_s)
     end
 
-    # Get the raw Inventory with or without filters
-    def inventory(list = nil)
+    # Returns the entire inventory hash or a filtered subset based on the provided list of product codes.
+    def self.inventory(list = nil)
       list ? INVENTORY.select { |key, _| list.include?(key.to_s) } : INVENTORY
     end
   end
