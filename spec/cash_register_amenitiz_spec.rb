@@ -38,5 +38,14 @@ RSpec.describe CashRegisterAmenitiz::Cart do
       # 3.11 + 5.00 + 7.489 * 3 = 30.57
       expect(cart.total_price).to eq(30.57)
     end
+
+    # | TEST,CF1,CF1 | 32.46€ |
+    it 'calculates the pricing with and wihtout discount' do
+      cart.add_product('TEST') # 10.00
+      cart.add_product('CF1') # 11.23
+      cart.add_product('CF1') # 11.23
+      # 10.00 + 11.23 + 11.23 * 3 = 32.46
+      expect(cart.total_price).to eq(32.46)
+    end
   end
 end

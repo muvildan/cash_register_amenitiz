@@ -11,18 +11,19 @@ module CashRegisterAmenitiz
     INVENTORY = {
       'GR1': {
         'name': 'Green tea',
-        'price': 3.11,
-        'promotion': 'buy_one_get_one_free'
+        'price': 3.11
       },
       'SR1': {
         'name': 'Strawberry',
-        'price': 5.00,
-        'promotion': 'discount_to_fixed_price'
+        'price': 5.00
       },
       'CF1': {
         'name': 'Coffee',
-        'price': 11.23,
-        'promotion': 'discount_to_fractioned_price'
+        'price': 11.23
+      },
+      'TEST': {
+        'name': 'Test',
+        'price': 10
       }
     }.freeze
 
@@ -34,11 +35,6 @@ module CashRegisterAmenitiz
     # Get the product name.
     def name(product_code)
       INVENTORY[product_code.to_sym][:name]
-    end
-
-    # Get the product promotion.
-    def promotion(product_code)
-      INVENTORY[product_code.to_sym][:promotion]
     end
   end
 end

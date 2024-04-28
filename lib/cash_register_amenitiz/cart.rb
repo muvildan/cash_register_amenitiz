@@ -11,7 +11,7 @@ module CashRegisterAmenitiz
     # Initialize the cart with an empty array.
     def initialize
       @items = []
-      @product = CashRegisterAmenitiz::Product
+      @product = Product
     end
 
     # Adds a product to the Cart.
@@ -20,8 +20,10 @@ module CashRegisterAmenitiz
     end
 
     def total_price
-      promotion = CashRegisterAmenitiz::Promotion.new(@items, @product)
-      promotion.total_promotion.round(2)
+      promotion = Promotion.new(@items, @product)
+      no_promo, cart = promotion.total_promotion
+      cart += no_promo.map { |product_code| @product.price(product_code) }.sum
+      cart.round(2)
     end
   end
 end
