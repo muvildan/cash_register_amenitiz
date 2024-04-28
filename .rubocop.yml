@@ -10,5 +10,9 @@ Style/StringLiteralsInInterpolation:
 # For rspec line limit
 Metrics/BlockLength:
   AllowedMethods: ["describe"]
-  Exclude: 
-  - 'bin/app.rb'
+  Exclude:
+    - bin/app.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - bin/app.rb
