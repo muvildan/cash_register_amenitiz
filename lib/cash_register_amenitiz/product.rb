@@ -23,6 +23,10 @@ module CashRegisterAmenitiz
         'name': 'Coffee',
         'price': 11.23
       },
+      'CF2': {
+        'name': 'Dominican Coffee',
+        'price': 20.00
+      },
       'TEST': {
         'name': 'Test',
         'price': 10.00

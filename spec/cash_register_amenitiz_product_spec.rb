@@ -13,6 +13,8 @@ RSpec.describe CashRegisterAmenitiz::Product do
         expect(product.price('SR1')).to eq(5.00)
         expect(product.name('CF1')).to eq('Coffee')
         expect(product.price('CF1')).to eq(11.23)
+        expect(product.name('CF2')).to eq('Dominican Coffee')
+        expect(product.price('CF2')).to eq(20.00)
         expect(product.name('TEST')).to eq('Test')
         expect(product.price('TEST')).to eq(10.00)
       end

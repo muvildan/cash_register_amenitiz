@@ -7,6 +7,9 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 
+Style/WordArray:
+  EnforcedStyle: brackets
+
 # For rspec line limit
 Metrics/BlockLength:
   AllowedMethods: ["describe"]

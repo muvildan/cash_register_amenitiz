@@ -27,8 +27,9 @@ module CashRegisterAmenitiz
     def total_promotion
       total_price = 0.0
       total_price += buy_one_get_one_free(@items, 'GR1')
-      total_price += discount(@items, 'SR1', 3, 4.50, 'fixed')
-      total_price += discount(@items, 'CF1', 3, 2/3r, 'fractional')
+      total_price += discount(@items, ['SR1'], 3, 0.50, 'fixed')
+      total_price += discount(@items, ['CF1', 'CF2'], 3, 3.00, 'fixed')
+      total_price += discount(@items, ['TEST'], 3, 2/4r, 'fractional')
       [@no_promo, total_price]
     end
 
@@ -49,17 +50,23 @@ module CashRegisterAmenitiz
     # Calculates the price for fixed or fractional discount.
     #
     # @param items [Array<String>] An array of product codes.
-    # @param product_code [String] The product code to apply the discount.
+    # @param product_codes [Array] The product code to apply the discount.
     # @param activation [Integer] The minimum units required for the discount.
     # @param discount [Float] The discount amount (fixed or fractional).
     # @param type [String] The discount type ('fixed' or 'fractional').
     # @return [Float] The calculated price.sd
-    def discount(items, product_code, activation, discount, type = 'fixed')
-      units = items.count(product_code)
-      product_price = Product.price(product_code)
-      price = type == 'fixed' ? discount : product_price * discount
-      update_no_promo(product_code)
-      units >= activation ? (units * price) : units * product_price
+    def discount(items, product_codes, activation, discount, type = 'fixed')
+      total_units = product_codes.sum { |code| items.count(code) }
+
+      return 0 unless total_units >= activation
+
+      product_codes.map do |code|
+        units = items.count(code)
+        product_price = Product.price(code)
+        discounted_price = type == 'fixed' ? (product_price - discount) : product_price * discount
+        update_no_promo(code)
+        units * discounted_price
+      end.sum
     end
 
     # Removes the promoted item from the no-promo list.
